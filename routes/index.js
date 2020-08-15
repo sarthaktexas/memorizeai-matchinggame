@@ -17,17 +17,17 @@ const document = 'jPzs1gjrc2m1YntnTJKc';
 //const decks = firestore.collection('decks').get();
 //const decks = firestore.collection('decks').where('slugId', '===', SLUG_ID).limit(1).get();
 //const cards = firestore.collection('decks').where('slugId', '===', SLUG_ID).limit(1).get();
-const cards = firestore.collection('decks');
+const cards = firestore.collection('decks').doc(document).collection('cards');
 
 /* GET home page. */
 router.get('/', async function (req, res, next) {
   try {
+    const cardList = await cards.get();
     var cardListArray = [];
-    cards.forEach(doc => {
-      //cardListArray.push(doc.data());
-    	console.log(doc.id, '=>', doc.data().name);
+    cardList.forEach(doc => {
+      cardListArray.push(doc.data());
+    	//console.log(doc.id, '=>', doc.data().name);
     });
-    console.log(cardListArray);
     res.render('index', {
       title: 'Response',
       cards: cardListArray
