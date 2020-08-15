@@ -14,23 +14,23 @@ firebase.initializeApp({
 require('firebase/firestore')
 const firestore = firebase.firestore();
 const document = 'jPzs1gjrc2m1YntnTJKc';
-const decks = firestore.collection('decks').get();
+//const decks = firestore.collection('decks').get();
 //const decks = firestore.collection('decks').where('slugId', '===', SLUG_ID).limit(1).get();
 //const cards = firestore.collection('decks').where('slugId', '===', SLUG_ID).limit(1).get();
+const cards = firestore.collection('decks');
 
 /* GET home page. */
 router.get('/', async function (req, res, next) {
   try {
     var cardListArray = [];
-    decks.forEach(doc => {
+    cards.forEach(doc => {
       //cardListArray.push(doc.data());
-    	console.log(doc.slugId, '=>', doc.data().name);
+    	console.log(doc.id, '=>', doc.data().name);
     });
     console.log(cardListArray);
     res.render('index', {
       title: 'Response',
-      cards: cardListArray,
-      deck: deckInfo
+      cards: cardListArray
     });
   } catch (error) {
     res.render('index', {
