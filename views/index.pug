@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  br
+  p Here's your response:
+  //each card in cards
+    .flip-card
+      .flip-card-inner
+        .flip-card-front
+          h3!= card.front
+        .flip-card-back
+          p!= card.back
