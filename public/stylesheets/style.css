@@ -49,7 +49,7 @@ a {
   color: black;
   border-radius: 20px;
   overflow: scroll;
-  padding: 5px;
+  padding: 5px 0 5px 0;
 }
 
 /* Style the back side */
@@ -59,7 +59,7 @@ a {
   transform: rotateY(180deg);
   border-radius: 20px;
   overflow: scroll;
-  padding: 5px;
+  padding: 5px 0 5px 0;
 }
 
 .flip-card-front, .flip-card-back, img {
